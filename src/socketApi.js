@@ -15,10 +15,10 @@ io.on('connection',(socket)=> {
                 x: 0,
                 y:0
             }
-        }
+        };
         const userData = Object.assign(data,defaultData);
         users.push(userData);
-        console.log(users);
+        socket.broadcast.emit('newUserLogin', userData);
     });
 });
 
