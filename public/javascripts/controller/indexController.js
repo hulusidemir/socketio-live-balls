@@ -8,7 +8,7 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
           return false;
     };
     $scope.messages = [ ];
-
+    $scope.players = {};
     function initSocket(username) {
         const connectionOptions = {
             reconnectionAttempts : 3,
@@ -16,6 +16,11 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
         };
         indexFactory.connectSocket('http://localhost:3000',connectionOptions).then((socket)=> {
             socket.emit('newUser', {username});
+            socket.on('initPlayer',(players)=> {
+                $scope.players = players;
+                $scope.$apply();
+                console.log(players);
+            });
             socket.on('newUserLogin',(data)=> {
                const messageData = {
                    type: {
@@ -25,6 +30,7 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
                    username: data.username
                };
                $scope.messages.push(messageData);
+               $scope.players[data.id] = data;
                $scope.$apply();
             });
             socket.on('disUser',(user)=> {
@@ -36,8 +42,19 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
                     username: user.username
                 };
                 $scope.messages.push(messageData);
+                delete $scope.players[data.id];
                 $scope.$apply();
             });
+            let animate = false;
+            $scope.onClickPlayer = ($event)=> {
+                console.log($event.offsetX, $event.offsetY);
+                if (!animate) {
+                    animate = true;
+                    $('#'+socket.id).animate({'left':$event.offsetX, 'top': $event.offsetY }, ()=> {
+                        animate = false;
+                    });
+                }
+            };
         }).catch((err)=> {
             console.log(err);
         });
