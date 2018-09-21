@@ -9,6 +9,21 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
     };
     $scope.messages = [ ];
     $scope.players = {};
+
+    function scrollTop() {
+        setTimeout(()=> {
+            const element = document.querySelector('#chat-area');
+            element.scrollTop = element.scrollHeight;
+        });
+    }
+
+    function showBubble(id, message) {
+        $('#' + id).find('.message').show().html(message);
+        setTimeout(()=> {
+            $('#' + id).find('.message').hide()
+        }, 2000);
+    }
+
     function initSocket(username) {
         const connectionOptions = {
             reconnectionAttempts : 3,
@@ -19,7 +34,6 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
             socket.on('initPlayer',(players)=> {
                 $scope.players = players;
                 $scope.$apply();
-                console.log(players);
             });
             socket.on('newUserLogin',(data)=> {
                 const messageData = {
@@ -31,6 +45,7 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
                 };
                 $scope.messages.push(messageData);
                 $scope.players[data.id] = data;
+                scrollTop();
                 $scope.$apply();
             });
             socket.on('disUser',(user)=> {
@@ -43,9 +58,10 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
                 };
                 $scope.messages.push(messageData);
                 delete $scope.players[user.id];
+                scrollTop();
                 $scope.$apply();
-            });
 
+            });
 
 
             socket.on('animateFront',data => {
@@ -53,6 +69,15 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
                     animate = false;
                 });
             });
+
+            socket.on('newMessage',(data)=> {
+                $scope.messages.push(data);
+                $scope.$apply();
+                scrollTop();
+                showBubble(data.socketId, data.text);
+            });
+
+
             let animate = false;
             $scope.onClickPlayer = ($event)=> {
                 if (!animate) {
@@ -69,6 +94,26 @@ let controller = app.controller('indexController', ['$scope','indexFactory', ($s
                     });
                 }
             };
+            $scope.newMessage = ()=> {
+                let message = $scope.message;
+                const messageData = {
+                    type: {
+                        code: 1, // server or user message
+                    },
+                    username: username,
+                    text : message
+                };
+
+                $scope.messages.push(messageData);
+                $scope.message = '';
+
+                socket.emit('newMessage', messageData);
+                showBubble(socket.id,message);
+                scrollTop();
+
+
+
+            }
 
         }).catch((err)=> {
             console.log(err);
