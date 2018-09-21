@@ -1,7 +1,7 @@
 const socketIo = require('socket.io');
 const io = socketIo();
 
-const socketApi =  {};
+const socketApi =  { };
 socketApi.io = io;
 
 const users = { };
@@ -24,7 +24,21 @@ io.on('connection',(socket)=> {
     socket.on('disconnect',()=> {
         socket.broadcast.emit('disUser', users[socket.id]);
         delete users[socket.id];
-        console.log(users);
+    });
+    socket.on('animate',(data)=> {
+        try {
+            users[socket.id].position.x = data.x;
+            users[socket.id].position.y = data.y;
+
+            socket.broadcast.emit('animateFront', {
+                socketId : socket.id,
+                x : data.x,
+                y : data.y
+            });
+        } catch (e) {
+            console.log(e);
+        }
+
     });
 });
 
