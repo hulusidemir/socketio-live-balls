@@ -4,6 +4,7 @@
     <list default="true" id="d8b197e3-5cea-458e-9d17-ba4b7159f6af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layout.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.pug" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -41,14 +42,14 @@
           <entry key="css" value="1" />
           <entry key="gitignore" value="2" />
           <entry key="js" value="21" />
-          <entry key="json" value="1" />
+          <entry key="json" value="2" />
           <entry key="pug" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="JSON" value="1" />
+          <entry key="JSON" value="2" />
           <entry key="Jade" value="13" />
           <entry key="JavaScript" value="21" />
           <entry key="PLAIN_TEXT" value="3" />
@@ -60,6 +61,7 @@
           <entry key="css" value="35" />
           <entry key="gitignore" value="14" />
           <entry key="js" value="3361" />
+          <entry key="json" value="5" />
           <entry key="pug" value="556" />
           <entry key="txt" value="7" />
         </counts>
@@ -67,6 +69,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="35" />
+          <entry key="JSON" value="5" />
           <entry key="Jade" value="556" />
           <entry key="JavaScript" value="3361" />
           <entry key="PLAIN_TEXT" value="22" />
@@ -77,10 +80,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+            <state relative-caret-position="132">
+              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -125,6 +128,7 @@
         <option value="$PROJECT_DIR$/public/javascripts/controller/indexController.js" />
         <option value="$PROJECT_DIR$/views/layout.pug" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -230,7 +234,7 @@
       <workItem from="1537394315946" duration="2258000" />
       <workItem from="1537568451876" duration="41000" />
       <workItem from="1537568704001" duration="5505000" />
-      <workItem from="1537655407435" duration="274000" />
+      <workItem from="1537655407435" duration="582000" />
     </task>
     <task id="LOCAL-00001" summary="TEST">
       <created>1536954447590</created>
@@ -243,7 +247,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42819000" />
+    <option name="totallyTimeSpent" value="43127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -381,6 +385,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
