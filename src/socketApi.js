@@ -12,11 +12,13 @@ const randomColor = require('../helpers/randomColor');
 io.on('connection',(socket)=> {
     console.log('a user connected');
     socket.on('newUser',(data)=> {
+        const rndX = Math.randomNumber(0,400);
+        const rndY = Math.randomNumber(0,400);
         const defaultData = {
             id: socket.id,
             position: {
-                x: 0,
-                y:0
+                x: rndX,
+                y:rndX
             },
             color : randomColor()
         };
@@ -24,6 +26,7 @@ io.on('connection',(socket)=> {
         users[socket.id] = userData;
         socket.broadcast.emit('newUserLogin', users[socket.id]);
         socket.emit('initPlayer',users);
+
     });
     socket.on('disconnect',()=> {
         socket.broadcast.emit('disUser', users[socket.id]);
@@ -39,6 +42,7 @@ io.on('connection',(socket)=> {
                 x : data.x,
                 y : data.y
             });
+            console.log(users);
         } catch (e) {
             console.log(e);
         }
