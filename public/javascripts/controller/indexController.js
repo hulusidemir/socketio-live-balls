@@ -23,7 +23,6 @@ let controller = app.controller('indexController', ['$scope','indexFactory','con
             $('#' + id).find('.message').hide()
         }, 2000);
     }
-
     async function initSocket(username) {
         const connectionOptions = {
             reconnectionAttempts: 3,
